@@ -30,9 +30,17 @@ class MainActivity : AppCompatActivity(), MainPresenter.MainView, ActivityCompon
         progressBar.visibility = View.VISIBLE
     }
 
-    override fun showName(name: SlideModel) {
+    override fun showItems(name: SlideModel) {
         progressBar.visibility = View.GONE
+        loadRecyclerView(name)
 
+
+        btnReload.setOnClickListener { v ->
+            loadRecyclerView(name)
+        }
+    }
+
+    private fun loadRecyclerView(name: SlideModel) {
         adapter = MainAdapter(name, applicationContext)
         recyclerView.adapter = adapter
     }

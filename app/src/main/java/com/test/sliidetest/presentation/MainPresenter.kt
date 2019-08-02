@@ -24,7 +24,7 @@ class MainPresenter @Inject constructor(private val newsRepo: NewsRepo) :
                 .subscribeOn(Schedulers.io())
                 .subscribe({ results ->
                     Log.d("CALL3", "WORKING")
-                    view.showName(results)
+                    view.showItems(results)
                 },
                     { throwable ->
                         Log.d("Error", throwable.message)
@@ -35,6 +35,7 @@ class MainPresenter @Inject constructor(private val newsRepo: NewsRepo) :
     interface MainView : BasePresenter.View {
 
         fun showLoading()
-        fun showName(name: SlideModel)
+        fun showItems(name: SlideModel)
+
     }
 }
