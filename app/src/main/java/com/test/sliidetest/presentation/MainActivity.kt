@@ -58,7 +58,18 @@ class MainActivity : AppCompatActivity(), MainPresenter.MainView, ActivityCompon
     }
 
     override fun onPause() {
-        super.onPause()
         mainPresenter.onViewDetached()
+        super.onPause()
     }
+
+    override fun onDestroy() {
+        mainPresenter.onViewDetached()
+        super.onDestroy()
+    }
+
+    override fun onResume() {
+        mainPresenter.onViewAttached(this)
+        super.onResume()
+    }
+
 }
